@@ -23,9 +23,9 @@ const closeModal = document.querySelectorAll(modalClose);
 /* Theme functions */
 // 'toggle helpers'
 const setActive = (elm, selector) => {
-    document.querySelector(`${selector}.${active}`) !== null 
-        ? document.querySelector(`${selector}.${active}`).classList.remove(active)
-        : elm.classList.add(active);
+    if (document.querySelector(`${selector}.${active}`) !== null) 
+        document.querySelector(`${selector}.${active}`).classList.remove(active);
+    elm.classList.add(active);
 }
 
 const setTheme = (val) => {
@@ -36,6 +36,14 @@ const setTheme = (val) => {
         root.setAttribute(dataTheme, light);
         localStorage.setItem(theme, light);
     }
+}
+
+if (currentTheme) {
+    root.setAttribute(dataTheme, currentTheme);
+    switcher.forEach((btn) => btn.classList.remove(active));
+    currentTheme === dark 
+        ? switcher[1].classList.add(active) 
+        : switcher[0].classList.add(active);  
 }
 
 // 'toggle tab_open/close panel'
