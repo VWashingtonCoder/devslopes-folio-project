@@ -13,6 +13,10 @@ const toggleTheme = document.querySelector(themeTab);
 const switcher = document.querySelectorAll(switcherBtn);
 const currentTheme = localStorage.getItem(theme);
 
+// Portfolio Variables
+const dataFilter = '[data-filter]';
+const filterLink = document.querySelectorAll(dataFilter);
+
 /* Modal variables */
 const modalOpen = '[data-open]';
 const modalClose = '[data-close]';
@@ -61,6 +65,13 @@ for (const elm of switcher) {
         setActive(elm, switcherBtn);
         setTheme(toggle);
     })
+}
+
+// 'toggle active class on portfolio-nav links'
+for (const link of filterLink) {
+    link.addEventListener('click', function() {
+        setActive(link, '.filter-link');
+    });
 }
 
 /* Full Site Modal functions */
