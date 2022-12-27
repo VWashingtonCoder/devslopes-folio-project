@@ -268,8 +268,8 @@
     right: 0;
     padding: 1rem;
     transition: all 0.35s ease-in;
-    /* visibility: hidden;
-    opacity: 0; */
+    visibility: hidden;
+    opacity: 0;
 }
 
 .modal-dialog {
@@ -298,6 +298,7 @@
     cursor: pointer;
 }
 
+.modal.is-visible,
 .full-site-modal.is-visible {
     visibility: visible;
     opacity: 1;
