@@ -14,10 +14,12 @@ const switcher = document.querySelectorAll(switcherBtn);
 const currentTheme = localStorage.getItem(theme);
 
 // Portfolio Variables
+const searchBox = document.querySelector('#search');
 const dataFilter = '[data-filter]';
 const portfolioData = '[data-item]';
 const filterLink = document.querySelectorAll(dataFilter);
 const portfolioItems = document.querySelectorAll(portfolioData);
+
 
 /* Modal variables */
 const modalOpen = '[data-open]';
@@ -69,18 +71,26 @@ for (const elm of switcher) {
     })
 }
 
+// search functionality
+searchBox.addEventListener('keyup', (e) => {
+    const searchInput = e.target.value.toLowerCase().trim();
+    portfolioItems.forEach((card) => {
+        card.dataset.item.includes(searchInput)
+            ? card.style.display = 'block'
+            : card.style.display = 'none'; 
+    })
+});
+
 // 'toggle active class on portfolio-nav links'
 for (const link of filterLink) {
     link.addEventListener('click', function() {
         setActive(link, '.filter-link');
-        
         const filter = this.dataset.filter;
-        
         portfolioItems.forEach((card) => {
             if (filter === 'all') card.style.display = 'block';
             else if (card.dataset.item === filter) card.style.display = 'block';
             else card.style.display = 'none';
-        })
+        });
     });
 }
 
