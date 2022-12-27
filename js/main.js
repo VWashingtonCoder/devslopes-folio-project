@@ -106,6 +106,6 @@ for (const elm of openModal){
 // 'close buttons'
 for (const elm of closeModal){
     elm.addEventListener('click', function() {
-        this.parentElement.parentElement.classList.remove(isVisible);
+        this.parentElement.parentElement.parentElement.classList.remove(isVisible);
     })
 }
