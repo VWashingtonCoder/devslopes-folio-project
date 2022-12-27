@@ -15,7 +15,9 @@ const currentTheme = localStorage.getItem(theme);
 
 // Portfolio Variables
 const dataFilter = '[data-filter]';
+const portfolioData = '[data-item]';
 const filterLink = document.querySelectorAll(dataFilter);
+const portfolioItems = document.querySelectorAll(portfolioData);
 
 /* Modal variables */
 const modalOpen = '[data-open]';
@@ -71,6 +73,14 @@ for (const elm of switcher) {
 for (const link of filterLink) {
     link.addEventListener('click', function() {
         setActive(link, '.filter-link');
+        
+        const filter = this.dataset.filter;
+        
+        portfolioItems.forEach((card) => {
+            if (filter === 'all') card.style.display = 'block';
+            else if (card.dataset.item === filter) card.style.display = 'block';
+            else card.style.display = 'none';
+        })
     });
 }
 
