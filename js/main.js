@@ -37,7 +37,7 @@ const setActive = (elm, selector) => {
 }
 
 const setTheme = (val) => {
-    if(val === dark) {
+    if (val === dark) {
         root.setAttribute(dataTheme, dark);
         localStorage.setItem(theme, dark);
     } else {
